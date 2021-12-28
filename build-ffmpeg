@@ -484,7 +484,7 @@ if $NONFREE_AND_GPL; then
 fi
 
 # if $NONFREE_AND_GPL; then
-if FALSE; then
+if false; then
   if build "x265" "3.5"; then
     download "https://github.com/videolan/x265/archive/Release_3.5.tar.gz" "x265-3.5.tar.gz" # This is actually 3.4 if looking at x265Version.txt
     cd build/linux || exit
@@ -617,7 +617,7 @@ CONFIGURE_OPTIONS+=("--enable-libzimg")
 ## audio library
 ##
 
-if FALSE; then
+if false; then
 # if command_exists "python3"; then
 
   if build "lv2" "1.18.2"; then
@@ -728,7 +728,7 @@ if build "libvorbis" "1.3.6"; then
 fi
 CONFIGURE_OPTIONS+=("--enable-libvorbis")
 
-if FALSE; then
+if false; then
 if build "libtheora" "1.1.1"; then
   download "https://ftp.osuosl.org/pub/xiph/releases/theora/libtheora-1.1.1.tar.gz"
   sed "s/-fforce-addr//g" configure >configure.patched
