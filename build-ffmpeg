@@ -483,7 +483,8 @@ if $NONFREE_AND_GPL; then
   CONFIGURE_OPTIONS+=("--enable-libx264")
 fi
 
-if $NONFREE_AND_GPL; then
+# if $NONFREE_AND_GPL; then
+if FALSE; then
   if build "x265" "3.5"; then
     download "https://github.com/videolan/x265/archive/Release_3.5.tar.gz" "x265-3.5.tar.gz" # This is actually 3.4 if looking at x265Version.txt
     cd build/linux || exit
