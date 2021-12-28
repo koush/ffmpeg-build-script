@@ -309,16 +309,16 @@ fi
 ## build tools
 ##
 
-if build "giflib" "5.2.1"; then
-  download "https://sourceforge.net/projects/giflib/files/giflib-5.2.1.tar.gz"
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-      download "https://sourceforge.net/p/giflib/bugs/_discuss/thread/4e811ad29b/c323/attachment/Makefile.patch"
-      execute patch "${PACKAGES}/giflib-5.2.1/Makefile" ${PACKAGES}/Makefile.patch""
-    fi
-  execute make -j $MJOBS
-  execute make PREFIX="${WORKSPACE}" install
-  build_done "giflib" "5.2.1"
-fi
+# if build "giflib" "5.2.1"; then
+#   download "https://sourceforge.net/projects/giflib/files/giflib-5.2.1.tar.gz"
+#     if [[ "$OSTYPE" == "darwin"* ]]; then
+#       download "https://sourceforge.net/p/giflib/bugs/_discuss/thread/4e811ad29b/c323/attachment/Makefile.patch"
+#       execute patch "${PACKAGES}/giflib-5.2.1/Makefile" ${PACKAGES}/Makefile.patch""
+#     fi
+#   execute make -j $MJOBS
+#   execute make PREFIX="${WORKSPACE}" install
+#   build_done "giflib" "5.2.1"
+# fi
 
 if build "pkg-config" "0.29.2"; then
   download "https://pkgconfig.freedesktop.org/releases/pkg-config-0.29.2.tar.gz"
@@ -616,7 +616,8 @@ CONFIGURE_OPTIONS+=("--enable-libzimg")
 ## audio library
 ##
 
-if command_exists "python3"; then
+if FALSE; then
+# if command_exists "python3"; then
 
   if build "lv2" "1.18.2"; then
     download "https://lv2plug.in/spec/lv2-1.18.2.tar.bz2" "lv2-1.18.2.tar.bz2"
