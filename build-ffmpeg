@@ -567,7 +567,8 @@ if $NONFREE_AND_GPL; then
   CONFIGURE_OPTIONS+=("--enable-libxvid")
 fi
 
-if $NONFREE_AND_GPL; then
+# if $NONFREE_AND_GPL; then
+if false; then
   if build "vid_stab" "1.1.0"; then
     download "https://github.com/georgmartius/vid.stab/archive/v1.1.0.tar.gz" "vid.stab-1.1.0.tar.gz"
 
