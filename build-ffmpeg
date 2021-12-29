@@ -586,7 +586,8 @@ if false; then
   CONFIGURE_OPTIONS+=("--enable-libvidstab")
 fi
 
-if build "av1" "ae2be80"; then
+# if build "av1" "ae2be80"; then
+if false; then
   # libaom ae2be80 == v3.1.2
   download "https://aomedia.googlesource.com/aom/+archive/ae2be8030200925895fa6e98bd274ffdb595cbf6.tar.gz" "av1.tar.gz" "av1"
   make_dir "$PACKAGES"/aom_build
