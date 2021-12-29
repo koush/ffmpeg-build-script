@@ -586,8 +586,8 @@ if false; then
   CONFIGURE_OPTIONS+=("--enable-libvidstab")
 fi
 
-# if build "av1" "ae2be80"; then
 if false; then
+if build "av1" "ae2be80"; then
   # libaom ae2be80 == v3.1.2
   download "https://aomedia.googlesource.com/aom/+archive/ae2be8030200925895fa6e98bd274ffdb595cbf6.tar.gz" "av1.tar.gz" "av1"
   make_dir "$PACKAGES"/aom_build
@@ -603,6 +603,7 @@ if false; then
   build_done "av1" "ae2be80"
 fi
 CONFIGURE_OPTIONS+=("--enable-libaom")
+fi
 
 if build "zimg" "3.0.3"; then
   download "https://github.com/sekrit-twc/zimg/archive/refs/tags/release-3.0.3.tar.gz" "zimg-3.0.3.tar.gz" "zimg"
