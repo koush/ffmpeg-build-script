@@ -436,7 +436,8 @@ if command_exists "python3"; then
   fi
 fi
 
-if ! $MACOS_M1; then
+# if ! $MACOS_M1; then
+if false; then
   if build "svtav1" "1a3e32b"; then
     execute rm -f "${PACKAGES}/SVT-AV1-master.tar.gz" "${PACKAGES}/svtav1-1a3e32b.tar.gz"
     # Last known working commit which passed CI Tests from HEAD branch
