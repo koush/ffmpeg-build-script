@@ -467,18 +467,20 @@ if $NONFREE_AND_GPL; then
   CONFIGURE_OPTIONS+=("--enable-libx264")
 fi
 
-# if $NONFREE_AND_GPL; then
-if false; then
+if $NONFREE_AND_GPL; then
   if build "x265" "3.5"; then
     download "https://github.com/videolan/x265/archive/Release_3.5.tar.gz" "x265-3.5.tar.gz" # This is actually 3.4 if looking at x265Version.txt
     cd build/linux || exit
     rm -rf 8bit 10bit 12bit 2>/dev/null
     mkdir -p 8bit 10bit 12bit
     cd 12bit || exit
-    execute cmake ../../../source -DCMAKE_INSTALL_PREFIX="${WORKSPACE}" -DENABLE_SHARED=OFF -DBUILD_SHARED_LIBS=OFF -DHIGH_BIT_DEPTH=ON -DENABLE_HDR10_PLUS=ON -DEXPORT_C_API=OFF -DENABLE_CLI=OFF -DMAIN12=ON
+    if [[ ("$(uname -m)" != "aarch64") ]]; then
+      HDR10_PLUS="-DENABLE_HDR10_PLUS=ON"
+    fi
+    execute cmake ../../../source -DCMAKE_INSTALL_PREFIX="${WORKSPACE}" -DENABLE_SHARED=OFF -DBUILD_SHARED_LIBS=OFF -DHIGH_BIT_DEPTH=ON $HDR10_PLUS -DEXPORT_C_API=OFF -DENABLE_CLI=OFF -DMAIN12=ON
     execute make -j $MJOBS
     cd ../10bit || exit
-    execute cmake ../../../source -DCMAKE_INSTALL_PREFIX="${WORKSPACE}" -DENABLE_SHARED=OFF -DBUILD_SHARED_LIBS=OFF -DHIGH_BIT_DEPTH=ON -DENABLE_HDR10_PLUS=ON -DEXPORT_C_API=OFF -DENABLE_CLI=OFF
+    execute cmake ../../../source -DCMAKE_INSTALL_PREFIX="${WORKSPACE}" -DENABLE_SHARED=OFF -DBUILD_SHARED_LIBS=OFF -DHIGH_BIT_DEPTH=ON $HDR10_PLUS -DEXPORT_C_API=OFF -DENABLE_CLI=OFF
     execute make -j $MJOBS
     cd ../8bit || exit
     ln -sf ../10bit/libx265.a libx265_main10.a
