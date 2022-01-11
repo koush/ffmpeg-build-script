@@ -24,6 +24,8 @@ if [[ ("$(uname -m)" == "arm64") && ("$OSTYPE" == "darwin"*) ]]; then
   export ARCH=arm64
   export MACOSX_DEPLOYMENT_TARGET=11.0
   MACOS_M1=true
+else
+  export MACOSX_DEPLOYMENT_TARGET=10.10
 fi
 
 # Speed up the process
@@ -729,6 +731,7 @@ download "https://github.com/FFmpeg/FFmpeg/archive/refs/heads/release/$FFMPEG_VE
   --disable-doc \
   --disable-shared \
   --disable-sdl2 \
+  --disable-libxcb \
   --enable-pthreads \
   --enable-static \
   --enable-small \
